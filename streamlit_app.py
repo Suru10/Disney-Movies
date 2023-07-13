@@ -44,7 +44,8 @@ df = pd.read_csv("disney_movies.csv")
 st.header("Inspection")
 df.head()
 st.markdown("\n")
-st.markdown("This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
+st.markdown(
+  "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
 )
 
 df.columns
@@ -105,9 +106,11 @@ st.pyplot(fig)
 st.write("findings")
 
 # Summary:
-#adventure movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genre's have somewhat consitant earnings the most inconsistent sees to be action movies with only 3 movies that had high total grossing
+st.write(
+  "adventure movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genre's have somewhat consitant earnings the most inconsistent sees to be action movies with only 3 movies that had high total grossing"
+)
 
-# hypothesis: 2
+# st.heado hypothesis: 2
 #Code:
 data_disney = df[(df["release_date"] >= "2000-01-01")
                  & (df['release_date'] <= "2010-12-31")]
@@ -118,7 +121,9 @@ fig = px.bar(data_disney,
 fig.show()
 
 #Summary:
-st.write('I found that Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies. The other movies reached a gross of under 300 million dollars.')
+st.write(
+  "I found that Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies. The other movies reached a gross of under 300 million dollars."
+)
 
 # hypothosis: 3
 # code here:
@@ -149,8 +154,10 @@ fig.show()
 
 # hypothosis: 5
 # Code:
-st.subheader("Hypothesis 5: Is there a correlation between decade and genre popularity?")
-compare_disney = df.groupby('genre')['release_decade'].value_counts().reset_index(name='count')
+st.subheader(
+  "Hypothesis 5: Is there a correlation between decade and genre popularity?")
+compare_disney = df.groupby(
+  'genre')['release_decade'].value_counts().reset_index(name='count')
 fig2 = px.scatter(compare_disney, x="release_decade", y="count", color="genre")
 fig2.show()
 # Summary:
