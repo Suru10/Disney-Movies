@@ -161,7 +161,7 @@ st.write(
 
 
 st.header(
-  "hypothosis 3: Correlation between box total gross and release date?")
+  "hypothosis 3: What is the correlation between box total gross and release date?")
 # code here:
 df['release_date'] = pd.to_datetime(df['release_date'])
 fig2 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
@@ -169,7 +169,7 @@ fig2.show()
 
 st.subheader("Summary:")
 
-s
+st.write("")
 
 st.header("hypothosis 4: What decade produced the most Disney movies?")
 st.write(
@@ -216,8 +216,8 @@ fig6 = px.line(month_df, x="month", y="total_gross")
 fig6.show()
 st.plotly_chart(fig6, use_container_width=True)
 
-st.subheader("Ana:")
-st.write ("I found that the overall popularity of disney movies rises and falls in spikes throughout the year. May is the month that is most popular to release movies and September was the least. Overall the summer and winter months seem to be the most popular season to release movies and the season in between not as much.")
+st.subheader("Analysis:")
+st.write ("I found that the overall popularity of disney movies rises and falls in spikes throughout the year. May is the month that is most popular to release movies, and September was the least. Overall the summer and winter months seem to be the most popular season to release movies and the season in between not as much.")
 
 # hypothosis: 7
 #Code:
@@ -278,4 +278,4 @@ st.subheader("Hypothesis 7: Is there a change between movie genre and rating?")
 st.write("All Black Comedy movies are all rated R, and all Concert/Performance movies are rated G. The rest of the genres vary in rating.")
 st.markdown("---")
 st.subheader("Hypothesis 8: Which movie produced the most revenue by rating?")
-st.write("")
+st.write("Movies rated PG-13 garnered the most ")
