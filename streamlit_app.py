@@ -15,7 +15,6 @@ warnings.filterwarnings("ignore")
 # Tasha -> summary
 # Eddie -> 4
 # Kaela -> 4
-st.title("hello")
 st.title("Disney Movies")
 
 st.markdown(
@@ -35,13 +34,13 @@ st.markdown(
 )
 
 st.markdown(
-  "Hoy, my name is Kaela and I just finished my first year of highschool. Althogh I only have a year of experince with high level computer lanuges, I hope to find the capiblity to learn new computing lagnues outside of JavaScript.")
+  "Hoy, my name is Kaela and I just finished my first year of highschool. Althogh I only have a year of experince with high level computer lanuges, I hope to find the capiblity to learn new computing lagnues outside of JavaScript."
+)
 
 # Load the data set
 df = pd.read_csv("disney_movies.csv")
 
 # Inspection code
-
 
 df.head()
 st.markdown("\n")
@@ -165,7 +164,7 @@ st.subheader("Hypothesis 6: What month was most popular to release movies?")
 df["release_date"] = pd.to_datetime(df["release_date"])
 df["month"] = df['release_date'].dt.month
 month_df = df.groupby("month")['total_gross'].mean().reset_index()
-fig = px.scatter(month_df, x="release_date", y="total_gross")
+fig = px.line(month_df, x="month", y="total_gross")
 fig.show()
 
 #Summary:
