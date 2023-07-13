@@ -166,13 +166,6 @@ st.plotly_chart(fig4, use_container_width=True)
 
 st.subheader("Analysis:")
 st.write(
-  "Advet sees to be action movies with only 3 movies that had high total grossing. summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genres have somewhat consitant earnings the most inconsisten"
-)
-
-#
-
-st.subheader("Analysis:")
-st.write(
   "I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more."
 )
 
