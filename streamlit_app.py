@@ -238,14 +238,14 @@ st.write ("I found that all Black Comedy movies are all rated R, and all of the 
 st.subheader("Hypothesis 8: Which movie produced the most revenue by rating?")
 
 sns.set_theme()
-fig = plt.figure(figsize=(10, 4))
+fig8 = plt.figure(figsize=(10, 4))
 sns.scatterplot(
   data=df,
   x="total_gross",
   y="mpaa_rating",
 )
-
-st.header (summery:"")
+st.pyplot(fig8)
+st.header ("summery:")
 st.write ("I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. As you can tell from the gragh above, r reated movies did the worst in the total amount of gross income.")
 
 st.title("Summary of Analysis")
