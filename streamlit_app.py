@@ -102,21 +102,23 @@ df.reset_index(drop=True, inplace=True)
 st.write(df.isna().sum())
 st.markdown("\n")
 st.markdown(
-  "Dropna allows you to remove all the nul values in a data set making a more detailed"
+  ".dropna allows you to remove all the null values in a data set and .reset_index allows you to replace the original data set with the updated one without any of the null values or unnecessary columns or rows."
 )
+
 st.markdown("\n")
-st.write (".reset_index allows you to replace the original data set with the updated one without nuls or unnecessary columns."
-)
+st.write(df.shape)
+st.write("As you can see from the .shape function we have removed all of the rows with null values in them")
 
 # Analysis and Visualizations:
 st.title("Analysis and Visualizations")
 
 st.header("Hypothesis 1: How’s genre related to salary?")
 
-df['release_date'] = pd.to_datetime(df['release_date'])
-fig3 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
-fig3.show()
-st.plotly_chart(fig3, use_container_width=True)
+
+fig = px.scatter(df, x="genre", y="total_gross", color="genre")
+fig.show()
+st.plotly_chart(fig, use_container_width=True)
+
 st.subheader("Analysis:")
 st.write(
   "Adventure movies were able to make the most money while documentary or horror movies were the least successful for Disney and most genres have somewhat consistant earnings. The most inconsistent seems to be action movies with only 3 movies that had high total grossing."
