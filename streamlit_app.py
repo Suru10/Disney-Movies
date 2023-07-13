@@ -69,9 +69,6 @@ st.markdown("\n")
 st.markdown(
   "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
 )
-st.markdown(
-  "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
-)
 
 col1, col2 = st.columns(2)
 col2.write(df.columns)
@@ -79,17 +76,13 @@ col2.write("\n")
 col2.markdown(
   "This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'."
 )
-col2.markdown(
-  "This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'."
-)
+
 col1.dataframe(df.describe())
 col1.markdown("\n")
 col1.markdown(
   "Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column"
 )
-col1.markdown(
-  "Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column"
-)
+
 
 st.write(df.shape)
 st.markdown("\n")
@@ -103,7 +96,7 @@ st.markdown("This display shows the last five movies in our dataframe and the th
 
 # Cleaning code:
 # checking for null values:
-df.isna().sum()
+st.write(df.isna().sum())
 st.markdown("\n")
 st.markdown(
   "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
@@ -263,7 +256,7 @@ sns.scatterplot(
   y="mpaa_rating",
 )
 
-# summery: I discovered that the films with pg13 rateing did the best overall and suprizingly R rated moves did the worst when it comes to gross income.
+# summery: I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. PG and G rated 
 
 st.title("Summary of Analysis")
 st.markdown("---")
@@ -307,4 +300,4 @@ st.subheader("Hypothesis 4: What decade produced the most Disney movies?")
 st.write("The 1990s produced the most disney movies while the 1930s and 1970s produced the least.")
 st.markdown("---")
 st.subheader("Hypothesis 5: Is there a correlation between decade and genre popularity?")
-st.write("")
+st.write("Genre popularity changed each decade but, Comedy, action, and adventure stayed consistently a")
