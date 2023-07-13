@@ -41,10 +41,10 @@ st.markdown(
 df = pd.read_csv("disney_movies.csv")
 
 # Inspection code
-
+st.header("Inspection")
 df.head()
 st.markdown("\n")
-st.markdown(
+st.markdown()
   "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
 )
 
@@ -73,13 +73,13 @@ st.markdown("")
 df.isna().sum()
 st.markdown("\n")
 st.markdown(
-  "this code checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
+  "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
 )
 # Drop the column
 df.drop("inflation_adjusted_gross", axis=1, inplace=True)
 st.markdown("\n")
 st.markdown(
-  "This code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
+  ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
 )
 # Remove Null values
 df.dropna(inplace=True)
@@ -119,7 +119,7 @@ fig = px.bar(data_disney,
 fig.show()
 
 #Summary:
-#I found that Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies. The other movies reached a gross of under 300 million dollars.
+st.writeI found that Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies. The other movies reached a gross of under 300 million dollars.
 
 # hypothosis: 3
 # code here:
@@ -193,3 +193,5 @@ sns.scatterplot(
 )
 
 # summery: I discovered that the films with pg13 rateing did the best overall and suprizingly R rated moves did the worst when it comes to gross income.
+
+st.title("Summary of Analysis")
