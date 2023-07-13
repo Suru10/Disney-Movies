@@ -36,19 +36,18 @@ df.head()
 st.markdown("\n")
 st.markdown("This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest")
 
-df.columns
+col1, col2 = st.columns(2)
+col2.markdown(df.columns)
 st.markdown("\n")
 st.markdown("This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'.")
+col1.dataframe(df.describe()
+st.markdown("\n")
+st.markdown("Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column")
 
 df.shape
 st.markdown("\n")
-st.markdown(
-  ".shape reveals that this dataframe of disney movies has 579 rows and 6 columns of data."
-)
+st.markdown(".shape reveals that this dataframe of disney movies has 579 rows and 6 columns of data.")
 
-df.describe()
-st.markdown("\n")
-st.markdown("Here we are displaying the statistics of the data such as as the mean, minimum, and maximum values of each categ")
 
 df.tail()
 st.markdown("\n")
@@ -58,47 +57,39 @@ st.markdown("")
 # checking for null values:
 df.isna().sum()
 st.markdown("\n")
-st.markdown(
-  "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
-)
+st.markdown("isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating")
+
 # Drop the column
 df.drop("inflation_adjusted_gross", axis=1, inplace=True)
 st.markdown("\n")
-st.markdown(
-  ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
-)
+st.markdown(".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information")
+
 # Remove Null values
 df.dropna(inplace=True)
 st.markdown("\n")
 st.markdown("Dropna allows you to remove all the nul values in a data set making a more detailed")
 
 df.reset_index(drop=True, inplace=True)
-
+st.markdown("/n")
+st.markdown(".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns ")
 # Analysis and Visualizations:
 
 # Hypothesis 1:
-
 # Code:
 st.header("Hypothesis 1: How’s genre related to salary?")
 fig = plt.figure(figsize=(10, 4))
 sns.set_theme()
 
-sns.scatterplot(
-  data=df,
-  x="genre",
-  y="total_gross",
-  hue="genre",
-)
+sns.scatterplot(data=df, x="genre", y="total_gross", hue="genre")
 st.pyplot(fig)
 
 st.title("findings")
-
 st.header("Summary:")
 st.write(
   "Adventure movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genre's have somewhat consitant earnings the most inconsistent sees to be action movies with only 3 movies that had high total grossing."
 )
 
-st.header("hypothesis: 2")
+st.header("hypothesis: What was the most popular disney movie from 2000 to 2010?")
 #Code:
 data_disney = df[(df["release_date"] >= "2000-01-01")
                  & (df['release_date'] <= "2010-12-31")]
@@ -119,10 +110,10 @@ df['release_date'] = pd.to_datetime(df['release_date'])
 fig2 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
 fig2.show()
 
-# summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.
+#st.header("Summary:")
+st.write("Advet sees to be action movies with only 3 movies that had high total grossing." summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genre's have somewhat consitant earnings the most inconsisten")
 
 # hypothosis: 4
-
 # Code:
 
 df['release_decade'] = (df['release_date'].dt.year // 10) * 10
@@ -143,8 +134,7 @@ fig.show()
 # hypothosis: 5
 # Code:
 st.subheader("Hypothesis 5: Is there a correlation between decade and genre popularity?")
-compare_disney = df.groupby(
-  'genre')['release_decade'].value_counts().reset_index(name='count')
+compare_disney = df.groupby('genre')['release_decade'].value_counts().reset_index(name='count')
 fig2 = px.scatter(compare_disney, x="release_decade", y="count", color="genre")
 fig2.show()
 # Summary:
@@ -186,5 +176,6 @@ sns.scatterplot(
 
 st.title("Summary of Analysis")
 st.markdown("---")
-st.write("In the end we cam up with 8 different questions from analyzing the Disney Movies datase.")
+st.write("In the end we came up with 8 different questions from analyzing the Disney Movies dataset.")
 st.subheader("Hypothesis 1: How’s genre related to salary?")
+st.write("Adventure movies had the highest salary while Documentary and Horror had the lowest salary ")
