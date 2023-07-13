@@ -106,6 +106,7 @@ st.markdown(
 
 # Drop the column
 df.drop("inflation_adjusted_gross", axis=1, inplace=True)
+st.write(df.head())
 st.markdown("\n")
 st.markdown(
   ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
@@ -113,6 +114,7 @@ st.markdown(
 
 # Remove Null values
 df.dropna(inplace=True)
+st.write(df.isna)
 st.markdown("\n")
 st.markdown(
   "Dropna allows you to remove all the nul values in a data set making a more detailed"
@@ -165,9 +167,9 @@ df['release_date'] = pd.to_datetime(df['release_date'])
 fig2 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
 fig2.show()
 
-#st.header("Summary:")
+st.subheader("Summary:")
 
-
+s
 
 st.header("hypothosis 4: What decade produced the most Disney movies?")
 st.write(
@@ -188,25 +190,25 @@ fig = px.bar(x=decade_counts.index,
              template='plotly_white')
 fig.show()
 
-st.header("Summary:")
+st.subheader("Summary:")
 st.write(
   "I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more."
 )
 
 # hypothosis: 5
 # Code:
-st.subheader(
+st.header(
   "Hypothesis 5: Is there a correlation between decade and genre popularity?")
 compare_disney = df.groupby(
   'genre')['release_decade'].value_counts().reset_index(name='count')
 fig5 = px.scatter(compare_disney, x="release_decade", y="count", color="genre")
 fig5.show()
 st.plotly_chart(fig5, use_container_width=True)
-st.header("Summary:")
+st.subheader("Summary:")
 st.write ("I found that the popularity of genres changed each decade. Comedy was very popular in the 80s all the way to the 00s but then adventure tops the 2010s. The genre popularity also depended on the amount of movies release that decade. Overall Comdey, Drama, Adventure and Action found themselves with more movies produced then other genres.")
 
 # hypothosis: 6
-st.subheader("Hypothesis 6: What month was most popular to release movies?")
+st.header("Hypothesis 6: What month was most popular to release movies?")
 df["release_date"] = pd.to_datetime(df["release_date"])
 df["month"] = df['release_date'].dt.month
 month_df = df.groupby("month")['total_gross'].mean().reset_index()
@@ -214,7 +216,7 @@ fig6 = px.line(month_df, x="month", y="total_gross")
 fig6.show()
 st.plotly_chart(fig6, use_container_width=True)
 
-st.header("Summary:")
+st.subheader("Ana:")
 st.write ("I found that the overall popularity of disney movies rises and falls in spikes throughout the year. May is the month that is most popular to release movies and September was the least. Overall the summer and winter months seem to be the most popular season to release movies and the season in between not as much.")
 
 # hypothosis: 7
@@ -240,7 +242,7 @@ sns.scatterplot(
 )
 st.pyplot(fig8)
 st.subheader("Analysis:")
-st.write ("I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. As you can tell from the gragh above, r rated movies did the worst in the total amount of gross income.")
+st.write ("I discovered that the films rated PG-13 did the best overall in terms of the ability to make record breaking amounts of money. As you can tell from the gragh above, R rated movies did the worst in the total amount of gross income.")
 
 st.title("Summary of Analysis")
 st.markdown("---")
@@ -272,4 +274,8 @@ st.markdown("---")
 st.subheader("Hypothesis 6: What month was most popular to release movies?")
 st.write("It was found that May is the most popular month for disney to release movies while September was the least popular.")
 st.markdown("---")
-st.subheader("Hypothesis 7: ")
+st.subheader("Hypothesis 7: Is there a change between movie genre and rating?")
+st.write("All Black Comedy movies are all rated R, and all Concert/Performance movies are rated G. The rest of the genres vary in rating.")
+st.markdown("---")
+st.subheader("Hypothesis 8: Which movie produced the most revenue by rating?")
+st.write("")
