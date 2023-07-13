@@ -64,6 +64,7 @@ df = pd.read_csv("disney_movies.csv")
 
 # Inspection code
 st.header("Inspection")
+
 st.write(df.head())
 st.markdown("\n")
 st.markdown(
@@ -94,13 +95,11 @@ st.write(df.tail())
 st.markdown("\n")
 st.markdown("This display shows the last five movies in our dataframe and the the newest 5 disney movies produced. It is of note that the dataset we used shows every movie up to 2016")
 
+st.header("Cleaning")
 # Cleaning code:
 # checking for null values:
 st.write(df.isna().sum())
 st.markdown("\n")
-st.markdown(
-  "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
-)
 st.markdown(
   "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
 )
@@ -111,16 +110,10 @@ st.markdown("\n")
 st.markdown(
   ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
 )
-st.markdown(
-  ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
-)
 
 # Remove Null values
 df.dropna(inplace=True)
 st.markdown("\n")
-st.markdown(
-  "Dropna allows you to remove all the nul values in a data set making a more detailed"
-)
 st.markdown(
   "Dropna allows you to remove all the nul values in a data set making a more detailed"
 )
@@ -130,10 +123,6 @@ st.markdown("\n")
 st.markdown(
   ".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns."
 )
-st.markdown(
-  ".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns."
-)
-
 # Analysis and Visualizations:
 
 # Hypothesis 1:
@@ -249,20 +238,18 @@ st.write ("I found that all Black Comedy movies are all rated R, and all of the 
 st.subheader("Hypothesis 8: Which movie produced the most revenue by rating?")
 
 sns.set_theme()
-
+fig = plt.figure(figsize=(10, 4))
 sns.scatterplot(
   data=df,
   x="total_gross",
   y="mpaa_rating",
 )
 
-# summery: I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. PG and G rated 
+st.header (summery:"")
+st.write ("I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. As you can tell from the gragh above, r reated movies did the worst in the total amount of gross income.")
 
 st.title("Summary of Analysis")
 st.markdown("---")
-st.write(
-  "In the end we came up with 8 different questions from analyzing the Disney Movies dataset."
-)
 st.write(
   "In the end we came up with 8 different questions from analyzing the Disney Movies dataset."
 )
@@ -280,17 +267,6 @@ st.write(
   "Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies of the 00s."
 )
 st.subheader(
-  "Hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
-st.write(
-  "Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies of the 00s."
-)
-st.markdown("---")
-st.subheader(
-  "Hypothesis 3: Is there a correlation between total gross and release date?")
-st.write(
-  "There is not much of a relation as the higher grossing had more to do with the frequency in which disney released movies."
-)
-st.subheader(
   "Hypothesis 3: Is there a correlation between total gross and release date?")
 st.write(
   "There is not much of a relation as the higher grossing had more to do with the frequency in which disney released movies."
@@ -300,4 +276,7 @@ st.subheader("Hypothesis 4: What decade produced the most Disney movies?")
 st.write("The 1990s produced the most disney movies while the 1930s and 1970s produced the least.")
 st.markdown("---")
 st.subheader("Hypothesis 5: Is there a correlation between decade and genre popularity?")
-st.write("Genre popularity changed each decade but, Comedy, action, and adventure stayed consistently a")
+st.write("Genre popularity changed each decade but, Comedy, action, and adventure stayed consistently near the top from the 1930s to the 2010s.")
+st.markdown("---")
+st.subheader("Hypothesis 6: What month was most popular to release movies?")
+st.write("")
