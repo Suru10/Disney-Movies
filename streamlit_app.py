@@ -123,6 +123,7 @@ st.markdown("\n")
 st.markdown(
   ".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns."
 )
+
 # Analysis and Visualizations:
 
 # Hypothesis 1:
@@ -191,9 +192,6 @@ st.header("Summary:")
 st.write(
   "I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more."
 )
-st.write(
-  "I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more."
-)
 
 # hypothosis: 5
 # Code:
@@ -221,13 +219,13 @@ st.write ("I found that the overall popularity of disney movies rises and falls 
 
 # hypothosis: 7
 #Code:
-st.subheader("Hypothesis 7: Is there a change between movie genre and rating?")
+st.header("Hypothesis 7: Is there a change between movie genre and rating?")
 compare_disney = df.groupby('genre')['mpaa_rating'].value_counts().reset_index(
   name='count')
 fig7 = px.bar(compare_disney, x="genre", y="count", color="mpaa_rating")
 fig7.show()
 st.plotly_chart(fig7, use_container_width=True)
-st.header("Summary")
+st.subheader("Analysis:")
 st.write ("I found that all Black Comedy movies are all rated R, and all of the Concert/Performance movies are rated G. The other categories each have multiple ratings, but some constant ratings are R, PG, and PG-13.")
 
 # hypothosis: 8
@@ -241,7 +239,7 @@ sns.scatterplot(
   y="mpaa_rating",
 )
 st.pyplot(fig8)
-st.header("Summary:")
+st.subheader("Analysis:")
 st.write ("I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. As you can tell from the gragh above, r rated movies did the worst in the total amount of gross income.")
 
 st.title("Summary of Analysis")
@@ -273,3 +271,5 @@ st.write("Genre popularity changed each decade but, Comedy, action, and adventur
 st.markdown("---")
 st.subheader("Hypothesis 6: What month was most popular to release movies?")
 st.write("It was found that May is the most popular month for disney to release movies while September was the least popular.")
+st.markdown("---")
+st.subheader("Hypothesis 7: ")
