@@ -32,17 +32,17 @@ df = pd.read_csv("disney_movies.csv")
 
 # Inspection code
 st.header("Inspection")
-df.head()
+st.markdown(df.head())
 st.markdown("\n")
 st.markdown("This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest")
 
 col1, col2 = st.columns(2)
 col2.markdown(df.columns)
-st.markdown("\n")
-st.markdown("This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'.")
+col2.markdown("\n")
+col2.markdown("This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'.")
 col1.dataframe(df.describe())
-st.markdown("\n")
-st.markdown("Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column")
+col1.markdown("\n")
+col1.markdown("Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column")
 
 df.shape
 st.markdown("\n")
@@ -71,8 +71,8 @@ st.markdown("Dropna allows you to remove all the nul values in a data set making
 
 df.reset_index(drop=True, inplace=True)
 st.markdown("/n")
-st.markdown(".
-resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns.")
+st.markdown(".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns.")
+
 # Analysis and Visualizations:
 
 # Hypothesis 1:
@@ -105,18 +105,17 @@ st.write(
   "I found that Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies. The other movies reached a gross of under 300 million dollars."
 )
 
-st.header("hypothosis: 3")
+st.header ("hypothosis: Correlation between box total gross and release date?")
 # code here:
 df['release_date'] = pd.to_datetime(df['release_date'])
 fig2 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
 fig2.show()
 
 #st.header("Summary:")
-st.write("Advet sees to be action movies with only 3 movies that had high total grossing." summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genre's have somewhat consitant earnings the most inconsisten")
+st.write("Advet sees to be action movies with only 3 movies that had high total grossing. summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genres have somewhat consitant earnings the most inconsisten")
 
-# hypothosis: 4
+st.header ("hypothosis: What decade produced the most Disney movies?")
 # Code:
-
 df['release_decade'] = (df['release_date'].dt.year // 10) * 10
 decade_counts = df['release_decade'].value_counts().sort_index()
 fig = px.bar(x=decade_counts.index,
@@ -129,12 +128,13 @@ fig = px.bar(x=decade_counts.index,
              template='plotly_white')
 fig.show()
 
-#Summary:
-# I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more.
+st.header("Summary:")
+st.write ("I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more.")
 
 # hypothosis: 5
 # Code:
 st.subheader("Hypothesis 5: Is there a correlation between decade and genre popularity?")
+fig5
 compare_disney = df.groupby('genre')['release_decade'].value_counts().reset_index(name='count')
 fig2 = px.scatter(compare_disney, x="release_decade", y="count", color="genre")
 fig2.show()
@@ -179,4 +179,9 @@ st.title("Summary of Analysis")
 st.markdown("---")
 st.write("In the end we came up with 8 different questions from analyzing the Disney Movies dataset.")
 st.subheader("Hypothesis 1: How’s genre related to salary?")
-st.write("Adventure movies had the highest salary while Documentary and Horror had the lowest salary ")
+st.write("Adventure movies had the highest salary while Documentary and Horror had the lowest salary. ")
+st.markdown("---")
+st.subheader("Hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
+st.write("Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies of the 00s.")
+st.markdown("---")
+st.subheader("Hypothesis 3: ")
