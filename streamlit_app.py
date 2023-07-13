@@ -16,6 +16,27 @@ warnings.filterwarnings("ignore")
 # Eddie -> 4
 # Kaela -> 4
 
+st.title("Happy Hamburgers")
+
+st.markdown(
+  "Hey my name is Bruce I just finished my sophmore year of highschool, I'm new to coding and have just started recently and i've really enjoyed it."
+)
+
+st.write(
+  "Hi, my name is Eduardo, I just finished my sophmore year of highschool, and I have around 2 years of coding experience in python. I hope to become more versatile and learn other coding languages besides python."
+)
+
+st.write(
+  "Hi! I'm Tasha and I am going into 11th grade. I have a year of coding experience with languages such as html, css, javascript, python, as well as coding with blocks. I hope to continue pursuing programming and hope to study computer science in university."
+)
+
+st.markdown(
+  "Hello my name is Jordan, I just finished 10th grade and I have around 2 years of coding experience in languages such as javascript and python."
+)
+
+st.markdown(
+  "Hey, my name is Kaela and I just finished my first year of highschool. Althogh I only have a year of experince with high level computer lanuges, I hope to find the capiblity to learn new computing lagnues outside of JavaScript."
+)
 st.markdown(
   "Hey my name is Bruce I just finished my sophmore year of highschool, I'm new to coding and have just started recently and i've really enjoyed it."
 )
@@ -48,10 +69,16 @@ st.markdown("\n")
 st.markdown(
   "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
 )
+st.markdown(
+  "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
+)
 
 col1, col2 = st.columns(2)
 col2.write(df.columns)
 col2.write("\n")
+col2.markdown(
+  "This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'."
+)
 col2.markdown(
   "This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'."
 )
@@ -60,21 +87,30 @@ col1.markdown("\n")
 col1.markdown(
   "Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column"
 )
+col1.markdown(
+  "Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column"
+)
 
-df.shape
+st.write(df.shape)
 st.markdown("\n")
+st.markdown(
+  ".shape reveals that this dataframe of disney movies has 579 rows and 6 columns of data."
+)
 st.markdown(
   ".shape reveals that this dataframe of disney movies has 579 rows and 6 columns of data."
 )
 
 df.tail()
 st.markdown("\n")
-st.markdown("")
+st.markdown("This display whows the last five movies in our dataframe and the the newest 5 disney movies produced")
 
 # Cleaning code:
 # checking for null values:
 df.isna().sum()
 st.markdown("\n")
+st.markdown(
+  "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
+)
 st.markdown(
   "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
 )
@@ -85,6 +121,9 @@ st.markdown("\n")
 st.markdown(
   ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
 )
+st.markdown(
+  ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
+)
 
 # Remove Null values
 df.dropna(inplace=True)
@@ -92,9 +131,15 @@ st.markdown("\n")
 st.markdown(
   "Dropna allows you to remove all the nul values in a data set making a more detailed"
 )
+st.markdown(
+  "Dropna allows you to remove all the nul values in a data set making a more detailed"
+)
 
 df.reset_index(drop=True, inplace=True)
 st.markdown("\n")
+st.markdown(
+  ".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns."
+)
 st.markdown(
   ".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns."
 )
@@ -118,6 +163,8 @@ st.write(
 
 st.header(
   "hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
+st.header(
+  "hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
 #Code:
 data_disney = df[(df["release_date"] >= "2000-01-01")
                  & (df['release_date'] <= "2010-12-31")]
@@ -134,12 +181,19 @@ st.write(
 
 st.header(
   "hypothosis 3: Correlation between box total gross and release date?")
+st.header(
+  "hypothosis 3: Correlation between box total gross and release date?")
 # code here:
 df['release_date'] = pd.to_datetime(df['release_date'])
 fig2 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
 fig2.show()
 
 #st.header("Summary:")
+st.write(
+  "Advet sees to be action movies with only 3 movies that had high total grossing. summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genres have somewhat consitant earnings the most inconsisten"
+)
+
+st.header("hypothosis 4: What decade produced the most Disney movies?")
 st.write(
   "Advet sees to be action movies with only 3 movies that had high total grossing. summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genres have somewhat consitant earnings the most inconsisten"
 )
@@ -162,19 +216,21 @@ st.header("Summary:")
 st.write(
   "I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more."
 )
+st.write(
+  "I found that the 1990s released the most Disney movies, followed by the 2000s. This surprised me as I would have thought the most recent decade would have released the most disney movies. I would assume 2010 to 2020 would have released the most movies if the data was not cut off at 2016. The 1930s have the least amount of movies produced. This makes sense considering the company released their first movie in 1937, leaving the decade only 3 years to make more."
+)
 
 # hypothosis: 5
 # Code:
 st.subheader(
   "Hypothesis 5: Is there a correlation between decade and genre popularity?")
-
 compare_disney = df.groupby(
   'genre')['release_decade'].value_counts().reset_index(name='count')
-fig2 = px.scatter(compare_disney, x="release_decade", y="count", color="genre")
-fig2.show()
-st.plotly_chart(fig2, use_container_width=True)
+fig5 = px.scatter(compare_disney, x="release_decade", y="count", color="genre")
+fig5.show()
+st.plotly_chart(fig5, use_container_width=True)
 st.header("Summary:")
-#st.write I found that the popularity of genres changed each decade. Comedy was very popular in the 80s all the way to the 00s but then adventure tops the 2010s. The genre popularity also depended on the amount of movies release that decade. Overall Comdey, Drama, Adventure and Action found themselves with more movies produced then other genres.
+st.write ("I found that the popularity of genres changed each decade. Comedy was very popular in the 80s all the way to the 00s but then adventure tops the 2010s. The genre popularity also depended on the amount of movies release that decade. Overall Comdey, Drama, Adventure and Action found themselves with more movies produced then other genres.")
 
 # hypothosis: 6
 st.subheader("Hypothesis 6: What month was most popular to release movies?")
@@ -184,8 +240,8 @@ month_df = df.groupby("month")['total_gross'].mean().reset_index()
 fig = px.line(month_df, x="month", y="total_gross")
 fig.show()
 
-#Summary:
-# I found that the overall popularity of disney movies rises and falls in spikes throughout the year. May is the month that is most popular to release movies and September was the least. Overall the summer and winter months seem to be the most popular season to release movies and the season in between not as much
+st.header("Summary:")
+st.write ("I found that the overall popularity of disney movies rises and falls in spikes throughout the year. May is the month that is most popular to release movies and September was the least. Overall the summer and winter months seem to be the most popular season to release movies and the season in between not as much.")
 
 # hypothosis: 7
 #Code:
@@ -194,7 +250,7 @@ compare_disney = df.groupby('genre')['mpaa_rating'].value_counts().reset_index(
   name='count')
 fig2 = px.bar(compare_disney, x="genre", y="count", color="mpaa_rating")
 fig2.show()
-#Summary
+#hadSummary
 #I found that all Black Comedy movies are all rated R, and all of the Concert/Performance movies are rated G. The other categories each have multiple ratings, but some constant ratings are R, PG, and PG-13.
 
 # hypothosis: 8
@@ -215,11 +271,22 @@ st.markdown("---")
 st.write(
   "In the end we came up with 8 different questions from analyzing the Disney Movies dataset."
 )
+st.write(
+  "In the end we came up with 8 different questions from analyzing the Disney Movies dataset."
+)
 st.subheader("Hypothesis 1: How’s genre related to salary?")
 st.write(
   "Adventure movies had the highest salary while Documentary and Horror had the lowest salary. "
 )
+st.write(
+  "Adventure movies had the highest salary while Documentary and Horror had the lowest salary. "
+)
 st.markdown("---")
+st.subheader(
+  "Hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
+st.write(
+  "Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies of the 00s."
+)
 st.subheader(
   "Hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
 st.write(
@@ -231,3 +298,11 @@ st.subheader(
 st.write(
   "There is not much of a relation as the higher grossing had more to do with the frequency in which disney released movies."
 )
+st.subheader(
+  "Hypothesis 3: Is there a correlation between total gross and release date?")
+st.write(
+  "There is not much of a relation as the higher grossing had more to do with the frequency in which disney released movies."
+)
+st.markdown("---")
+st.subheader("Hypothesis 4: What decade produced the most Disney movies?")
+st.write("The 1990s ")
