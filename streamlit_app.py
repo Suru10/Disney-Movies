@@ -17,25 +17,15 @@ warnings.filterwarnings("ignore")
 # Kaela -> 4
 st.title("Disney Movies")
 
-st.markdown(
-  "Hey my name is Bruce I just finished my sophmore year of highschool, I'm new to coding and have just started recently and i've really enjoyed it."
-)
+st.markdown("Hey my name is Bruce I just finished my sophmore year of highschool, I'm new to coding and have just started recently and i've really enjoyed it.")
 
-st.write(
-  "Hi, my name is Eduardo, I just finished my sophmore year of highschool, and I have around 2 years of coding experience in python. I hope to become more versatile and learn other coding languages besides python."
-)
+st.write("Hi, my name is Eduardo, I just finished my sophmore year of highschool, and I have around 2 years of coding experience in python. I hope to become more versatile and learn other coding languages besides python.")
 
-st.write(
-  "Hi! I'm Tasha and I am going into 11th grade. I have a year of coding experience with languages such as html, css, javascript, python, as well as coding with blocks. I hope to continue pursuing programming and hope to study computer science in university."
-)
+st.write("Hi! I'm Tasha and I am going into 11th grade. I have a year of coding experience with languages such as html, css, javascript, python, as well as coding with blocks. I hope to continue pursuing programming and hope to study computer science in university.")
 
-st.markdown(
-  "Hello my name is Jordan, I just finished 10th grade and I have around 2 years of coding experience in languages such as javascript and python."
-)
+st.markdown("Hello my name is Jordan, I just finished 10th grade and I have around 2 years of coding experience in languages such as javascript and python.")
 
-st.markdown(
-  "Hoy, my name is Kaela and I just finished my first year of highschool. Althogh I only have a year of experince with high level computer lanuges, I hope to find the capiblity to learn new computing lagnues outside of JavaScript."
-)
+st.markdown("Hey, my name is Kaela and I just finished my first year of highschool. Althogh I only have a year of experince with high level computer lanuges, I hope to find the capiblity to learn new computing lagnues outside of JavaScript.")
 
 # Load the data set
 df = pd.read_csv("disney_movies.csv")
@@ -44,15 +34,11 @@ df = pd.read_csv("disney_movies.csv")
 st.header("Inspection")
 df.head()
 st.markdown("\n")
-st.markdown(
-  "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
-)
+st.markdown("This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest")
 
 df.columns
 st.markdown("\n")
-st.markdown(
-  "This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'."
-)
+st.markdown("This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'.")
 
 df.shape
 st.markdown("\n")
@@ -62,7 +48,7 @@ st.markdown(
 
 df.describe()
 st.markdown("\n")
-st.markdown("")
+st.markdown("Here we are displaying the statistics of the data such as as the mean, minimum, and maximum values of each categ")
 
 df.tail()
 st.markdown("\n")
@@ -83,7 +69,9 @@ st.markdown(
 )
 # Remove Null values
 df.dropna(inplace=True)
-# Dropna allows you to remove all the nul values in a data set making a more detailed
+st.markdown("\n")
+st.markdown("Dropna allows you to remove all the nul values in a data set making a more detailed")
+
 df.reset_index(drop=True, inplace=True)
 
 # Analysis and Visualizations:
@@ -103,14 +91,14 @@ sns.scatterplot(
 )
 st.pyplot(fig)
 
-st.write("findings")
+st.title("findings")
 
-# Summary:
+st.header("Summary:")
 st.write(
-  "adventure movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genre's have somewhat consitant earnings the most inconsistent sees to be action movies with only 3 movies that had high total grossing"
+  "Adventure movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genre's have somewhat consitant earnings the most inconsistent sees to be action movies with only 3 movies that had high total grossing."
 )
 
-# st.heado hypothesis: 2
+st.header("hypothesis: 2")
 #Code:
 data_disney = df[(df["release_date"] >= "2000-01-01")
                  & (df['release_date'] <= "2010-12-31")]
@@ -154,8 +142,7 @@ fig.show()
 
 # hypothosis: 5
 # Code:
-st.subheader(
-  "Hypothesis 5: Is there a correlation between decade and genre popularity?")
+st.subheader("Hypothesis 5: Is there a correlation between decade and genre popularity?")
 compare_disney = df.groupby(
   'genre')['release_decade'].value_counts().reset_index(name='count')
 fig2 = px.scatter(compare_disney, x="release_decade", y="count", color="genre")
@@ -176,7 +163,7 @@ fig.show()
 
 # hypothosis: 7
 #Code:
-
+st.subheader("Hypothesis 7: Is there a change between movie genre and rating?")
 compare_disney = df.groupby('genre')['mpaa_rating'].value_counts().reset_index(
   name='count')
 fig2 = px.bar(compare_disney, x="genre", y="count", color="mpaa_rating")
@@ -185,8 +172,7 @@ fig2.show()
 #I found that all Black Comedy movies are all rated R, and all of the Concert/Performance movies are rated G. The other categories each have multiple ratings, but some constant ratings are R, PG, and PG-13.
 
 # hypothosis: 8
-
-import seaborn as sns
+st.subheader("Hypothesis 8: Which movie produced the most revenue by rating?")
 
 sns.set_theme()
 
@@ -199,3 +185,6 @@ sns.scatterplot(
 # summery: I discovered that the films with pg13 rateing did the best overall and suprizingly R rated moves did the worst when it comes to gross income.
 
 st.title("Summary of Analysis")
+st.markdown("---")
+st.write("In the end we cam up with 8 different questions from analyzing the Disney Movies datase.")
+st.subheader("Hypothesis 1: How’s genre related to salary?")
