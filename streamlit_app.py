@@ -39,6 +39,9 @@ st.markdown(
 )
 st.title("Disney Movies")
 
+st.markdown("\n")
+st.write(" This dataset contains all Disney movies with their release dates, genre, rating, total gross and inflation adjusted gross(2016).")
+
 # Load the data set
 df = pd.read_csv("disney_movies.csv")
 
@@ -110,11 +113,10 @@ st.title("Analysis and Visualizations")
 
 st.header("Hypothesis 1: How’s genre related to salary?")
 
-fig = plt.figure(figsize=(10, 4))
-sns.set_theme()
-sns.scatterplot(data=df, x="genre", y="total_gross", hue="genre")
-st.pyplot(fig)
-
+df['release_date'] = pd.to_datetime(df['release_date'])
+fig3 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
+fig3.show()
+st.plotly_chart(fig3, use_container_width=True)
 st.subheader("Analysis:")
 st.write(
   "Adventure movies were able to make the most money while documentary or horror movies were the least successful for Disney and most genres have somewhat consistant earnings. The most inconsistent seems to be action movies with only 3 movies that had high total grossing."
