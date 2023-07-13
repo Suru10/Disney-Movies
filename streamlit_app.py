@@ -15,8 +15,8 @@ warnings.filterwarnings("ignore")
 # Tasha -> summary
 # Eddie -> 4
 # Kaela -> 4
-
-st.title("Disney Movie Statistics")
+st.title("hello")
+st.title("Disney Movies")
 
 st.markdown(
   "Hey my name is Bruce I just finished my sophmore year of highschool, I'm new to coding and have just started recently and i've really enjoyed it."
@@ -35,12 +35,13 @@ st.markdown(
 )
 
 st.markdown(
-  "Hoy, my name is Kaela and I just finished my first year of highschool. althogh I only have a year of experince with high level computer lanuges, I hope to find")
+  "Hoy, my name is Kaela and I just finished my first year of highschool. Althogh I only have a year of experince with high level computer lanuges, I hope to find the capiblity to learn new computing lagnues outside of JavaScript.")
 
 # Load the data set
 df = pd.read_csv("disney_movies.csv")
 
 # Inspection code
+
 
 df.head()
 st.markdown("\n")
