@@ -142,8 +142,6 @@ st.write(
 
 st.header(
   "hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
-st.header(
-  "hypothesis 2: What was the most popular disney movie from 2000 to 2010?")
 #Code:
 data_disney = df[(df["release_date"] >= "2000-01-01")
                  & (df['release_date'] <= "2010-12-31")]
@@ -158,8 +156,7 @@ st.write(
   "I found that Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies. The other movies reached a gross of under 300 million dollars."
 )
 
-st.header(
-  "hypothosis 3: Correlation between box total gross and release date?")
+
 st.header(
   "hypothosis 3: Correlation between box total gross and release date?")
 # code here:
@@ -168,16 +165,15 @@ fig2 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
 fig2.show()
 
 #st.header("Summary:")
-st.write(
-  "Advet sees to be action movies with only 3 movies that had high total grossing. summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genres have somewhat consitant earnings the most inconsisten"
-)
+
+
 
 st.header("hypothosis 4: What decade produced the most Disney movies?")
 st.write(
   "Advet sees to be action movies with only 3 movies that had high total grossing. summery: As shown in the produced scatter plot, the type of correlation between total gross and release_date is weak positive. You can see that as modern disney movies grossed higher on average than past disney movies. However, that may be due to the fact that disney has released more frequently in the modern era.nture movies were able to make the most money while documentary or horror movies were the least succsesfull for disney and most genres have somewhat consitant earnings the most inconsisten"
 )
 
-st.header("hypothosis 4: What decade produced the most Disney movies?")
+
 # Code:
 df['release_decade'] = (df['release_date'].dt.year // 10) * 10
 decade_counts = df['release_decade'].value_counts().sort_index()
@@ -245,8 +241,8 @@ sns.scatterplot(
   y="mpaa_rating",
 )
 st.pyplot(fig8)
-st.header ("summery:")
-st.write ("I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. As you can tell from the gragh above, r reated movies did the worst in the total amount of gross income.")
+st.header("Summary:")
+st.write ("I discovered that the films with pg13 rateing did the best overall in terms of the ablitly to make recordbreaking amounts of money. As you can tell from the gragh above, r rated movies did the worst in the total amount of gross income.")
 
 st.title("Summary of Analysis")
 st.markdown("---")
@@ -254,9 +250,6 @@ st.write(
   "In the end we came up with 8 different questions from analyzing the Disney Movies dataset."
 )
 st.subheader("Hypothesis 1: How’s genre related to salary?")
-st.write(
-  "Adventure movies had the highest salary while Documentary and Horror had the lowest salary. "
-)
 st.write(
   "Adventure movies had the highest salary while Documentary and Horror had the lowest salary. "
 )
@@ -279,4 +272,4 @@ st.subheader("Hypothesis 5: Is there a correlation between decade and genre popu
 st.write("Genre popularity changed each decade but, Comedy, action, and adventure stayed consistently near the top from the 1930s to the 2010s.")
 st.markdown("---")
 st.subheader("Hypothesis 6: What month was most popular to release movies?")
-st.write("")
+st.write("It was found that May is the most popular month for disney to release movies while September was the least popular.")
