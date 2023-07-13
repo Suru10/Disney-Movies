@@ -40,7 +40,7 @@ col1, col2 = st.columns(2)
 col2.markdown(df.columns)
 st.markdown("\n")
 st.markdown("This shows the names of each column of the dataframe, namely 'movie_title', 'release_date', 'genre', 'mpaa_rating', 'total_gross', and 'inflation_adjusted_gross'.")
-col1.dataframe(df.describe()
+col1.dataframe(df.describe())
 st.markdown("\n")
 st.markdown("Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column")
 
@@ -71,7 +71,8 @@ st.markdown("Dropna allows you to remove all the nul values in a data set making
 
 df.reset_index(drop=True, inplace=True)
 st.markdown("/n")
-st.markdown(".resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns ")
+st.markdown(".
+resey_index allows you to replace the original data set with the updated one without nuls or unnecessary columns.")
 # Analysis and Visualizations:
 
 # Hypothesis 1:
@@ -104,7 +105,7 @@ st.write(
   "I found that Toy Story 3, Finding Nemo, Pirates of the Carribean: Dead Man's Chest, and Alice in Wonderland were the most popular movies. The other movies reached a gross of under 300 million dollars."
 )
 
-# hypothosis: 3
+st.header("hypothosis: 3")
 # code here:
 df['release_date'] = pd.to_datetime(df['release_date'])
 fig2 = px.scatter(df, x="release_date", y="total_gross", color="movie_title")
