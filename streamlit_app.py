@@ -7,19 +7,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 warnings.filterwarnings("ignore")
-# team -1
-# Jordan inspection and top portion
-# bruce - cleaning
-
-# team 2 Visualization, and summary
-# Tasha -> summary
-# Eddie -> 4
-# Kaela -> 4
 
 st.title("Happy Hamburgers")
 
 st.markdown(
-  "Hey my name is Bruce I just finished my sophmore year of highschool, I'm new to coding and have just started recently and i've really enjoyed it."
+  "Hey, my name is Bruce,I just finished my sophmore year of highschool, I'm new to coding and have just started recently and I've really enjoyed it."
 )
 
 st.write(
@@ -35,12 +27,14 @@ st.markdown(
 )
 
 st.markdown(
-  "Hey, my name is Kaela and I just finished my first year of highschool. Althogh I only have a year of experince with high level computer lanuges, I hope to find the capiblity to learn new computing lagnues outside of JavaScript."
+  "Hey, my name is Kaela and I just finished my first year of high school. Although I only have a year of experince with high level computer langauges, I hope to find the capability to learn new computing languages outside of JavaScript."
 )
 st.title("Disney Movies")
 
 st.markdown("\n")
-st.write(" This dataset contains all Disney movies with their release dates, genre, rating, total gross and inflation adjusted gross(2016).")
+st.write(
+  " This dataset contains all Disney movies with their release dates, genre, rating, total gross, and inflation adjusted gross (2016)."
+)
 
 # Load the data set
 df = pd.read_csv("disney_movies.csv")
@@ -51,7 +45,7 @@ st.header("Inspection")
 st.write(df.head())
 st.markdown("\n")
 st.markdown(
-  "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest"
+  "This displays the first five movies in the dataframe and the first five movies that disney ever produced. This shows that the movies are arranged in order of release date from earliest released to newest."
 )
 
 col1, col2 = st.columns(2)
@@ -64,7 +58,7 @@ col2.markdown(
 col1.dataframe(df.describe())
 col1.markdown("\n")
 col1.markdown(
-  "Here we are displaying the statistics of the data such as the mean, minimum, and maximum values of each column"
+  "Here we are displaying the statistics of the data in each column containing numerical values such as the mean, minimum, and maximum values"
 )
 
 st.write(df.shape)
@@ -76,7 +70,7 @@ st.markdown(
 st.write(df.tail())
 st.markdown("\n")
 st.markdown(
-  "This display shows the last five movies in our dataframe and the the newest 5 disney movies produced. It is of note that the dataset we used shows every movie up to 2016"
+  "This display shows the last five movies in our dataframe and the newest 5 Disney movies produced. It is of note that the dataset we used shows every movie up to 2016."
 )
 
 st.header("Cleaning")
@@ -85,7 +79,7 @@ st.header("Cleaning")
 st.write(df.isna().sum())
 st.markdown("\n")
 st.markdown(
-  "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 nul values in genre and 56 in mappa rating"
+  "isna.sum is a code that checks for any missing information within the dataset in this case we had 17 null values in genre and 56 in mpaa rating."
 )
 
 # Drop the column
@@ -93,7 +87,7 @@ df.drop("inflation_adjusted_gross", axis=1, inplace=True)
 st.write(df.head())
 st.markdown("\n")
 st.markdown(
-  ".drop code allows you to get rid of a column, witch we used to get rid inflation adjusted gross and any other irrelivent information"
+  ".drop code allows you to get rid of a column, which we used to get rid of inflation adjusted gross and any other irrelevant information."
 )
 
 # Remove Null values
@@ -107,13 +101,14 @@ st.markdown(
 
 st.markdown("\n")
 st.write(df.shape)
-st.write("As you can see from the .shape function we have removed all of the rows with null values in them")
+st.write(
+  "As you can see from the .shape function, we have removed all of the rows with null values in them."
+)
 
 # Analysis and Visualizations:
 st.title("Analysis and Visualizations")
 
 st.header("Hypothesis 1: How’s genre related to salary?")
-
 
 fig = px.scatter(df, x="genre", y="total_gross", color="genre")
 fig.show()
@@ -130,9 +125,9 @@ st.header(
 data_disney = df[(df["release_date"] >= "2000-01-01")
                  & (df['release_date'] <= "2010-12-31")]
 fig2 = px.bar(data_disney,
-             x="movie_title",
-             y="total_gross",
-             color="release_date")
+              x="movie_title",
+              y="total_gross",
+              color="release_date")
 fig2.show()
 st.plotly_chart(fig2, use_container_width=True)
 
@@ -151,20 +146,22 @@ fig3.show()
 st.plotly_chart(fig3, use_container_width=True)
 
 st.subheader("Analysis:")
-st.write("The correlation between release date and total gross is an exponentinal strong positive correlation in which you can clearly see the effects of inflation and evolution of Disney movies.")
+st.write(
+  "The correlation between release date and total gross is an exponentinal strong positive correlation in which you can clearly see the effects of inflation and evolution of Disney movies."
+)
 
 st.header("Hypothesis 4: What decade produced the most Disney movies?")
 
 df['release_decade'] = (df['release_date'].dt.year // 10) * 10
 decade_counts = df['release_decade'].value_counts().sort_index()
 fig4 = px.bar(x=decade_counts.index,
-             y=decade_counts.values,
-             labels={
-               'x': 'Decade',
-               'y': 'Number of Movies'
-             },
-             title='Disney Movies by Decade',
-             template='plotly_white')
+              y=decade_counts.values,
+              labels={
+                'x': 'Decade',
+                'y': 'Number of Movies'
+              },
+              title='Disney Movies by Decade',
+              template='plotly_white')
 fig4.show()
 st.plotly_chart(fig4, use_container_width=True)
 
